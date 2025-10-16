@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { apiClient, BACKEND_URL } from "../api/ApiClient";
+import apiClient, { BACKEND_URL } from "../api/ApiClient";
 
 export const Pizza = () => {
     const { id } = useParams();

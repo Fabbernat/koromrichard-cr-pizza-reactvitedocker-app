@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import type { apiClient } from "../api/ApiClient";
+import apiClient from "../api/ApiClient";
 import type { Pizza } from "../types/Pizza";
 
 export const EditPizza = () => {
+    const id = (new URL(document.location.toString())).pathname.split("/").at(-1);
+    if (!id) {
+        return <div>Nincs id megadva</div>;
+    }
     const [nev, setNev] = useState<string>('');
     const [leiras, setLeiras] = useState<string>('');
     const [ar, setAr] = useState<number>(0);
@@ -22,6 +26,7 @@ export const EditPizza = () => {
 
     const onSubmit = () => {
         const pizza: Pizza = {
+            id: Number(id),
             nev,
             leiras,
             ar,
