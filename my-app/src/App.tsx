@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import type { Pizza } from './types/Pizza'
-import apiClient, { BACKEND_URL } from './api/ApiClient' // az `apiClient` kimozdítható a {}-en kívülre
+import {apiClient,  BACKEND_URL } from './api/ApiClient' // az `apiClient` kimozdítható a {}-en kívülre
 
 function App() {
   const [pizzak, setPizzak] = useState<Array<Pizza>>([])

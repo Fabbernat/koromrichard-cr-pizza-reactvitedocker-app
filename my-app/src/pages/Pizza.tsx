@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import apiClient, { BACKEND_URL } from "../api/ApiClient";
+import {apiClient, BACKEND_URL } from "../api/ApiClient";
 
 export const Pizza = () => {
     const { id } = useParams();
@@ -23,7 +23,7 @@ export const Pizza = () => {
                 <img src={`${BACKEND_URL}/kepek/${typeof pizza}`} alt={typeof pizza} width={200} />
             </div>
         ) : (
-            <p>Nincs pizza 😥 🍕🚫</p>
+            <p>Nincs pizza 😥 🍕🚫💀🤡🥀</p>
         )}
     </>
     )
