@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { use, useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -6,6 +6,7 @@ import type { Pizza } from './types/Pizza'
 import { apiClient, BACKEND_URL } from './api/ApiClient'
 function App() {
   const [pizzak, setPizzak] = useState<Array<Pizza>>([])
+  const [pizza, setPizza] = useState<Pizza | null>(null)
 
   useEffect(() => {
     apiClient.
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <>
+    <p>HELLÓ!!!</p>
       {pizzak.map((pizza) => (
         <div key={pizza.id}>
           <h2>{pizza.nev}</h2>
