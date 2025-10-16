@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useFetcher, useParams } from "react-router-dom";
 import { apiClient, BACKEND_URL } from "../api/ApiClient";
 import type { Pizza } from "../types/Pizza";
 
@@ -9,6 +9,14 @@ export const NewPizza = () => {
     const [leiras, setLeiras] = useState<string>('');
     const [ar, setAr] = useState<number>(0);
     const [imageUrl, setImageUrl] = useState<string>('');
+
+    useEffect(() => {
+        apiClient.get(`/pizzak/${Number(id)}`)
+        .then((response) => {
+            setLeiras(response.data.leiras ?? "");
+        })
+        .catch((error) => console.error(error));
+    }, [id]);
     
     const onSubmit = (e: React.FormEvent) => {
         e.preventDefault();
