@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {apiClient, BACKEND_URL } from "../api/ApiClient";
 
-export const Pizza = () => {
+export const Pizzak = () => {
     const { id } = useParams();
-    const [pizza, setPizza] = useState<typeof Pizza | null>(null);
+    const [pizza, setPizza] = useState<typeof Pizzak | null>(null);
 
     useEffect(() => {
         apiClient.get(`/pizzak/${id}`)
@@ -14,7 +14,8 @@ export const Pizza = () => {
 
     return (
     <>
-    <h1>Ez egy pizza</h1>
+    <h1>Pizzák:</h1>
+    
         {pizza ? (
             <div>
                 <h2>{typeof pizza}</h2>
@@ -23,10 +24,14 @@ export const Pizza = () => {
                 <img src={`${BACKEND_URL}/kepek/${typeof pizza}`} alt={typeof pizza} width={200} />
             </div>
         ) : (
-            <p>Nincs pizza 😥 🍕🚫💀🤡🥀</p>
+            <>
+            <p>Nem találtunk pizzát 😥 🚫💀🤡🥀</p>
+            <sub>De tessék, itt egy pizza:</sub>
+            <h1>🍕</h1>
+            </>
         )}
     </>
     )
 }
 
-export default Pizza
+export default Pizzak
