@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import OnePizza from "./pages/OnePizza";
 import NewPizza from "./pages/NewPizza";
 import EditPizza from "./pages/EditPizza";
+import NotFoundPage from "./pages/errors/NotFoundPage";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -16,7 +17,7 @@ createRoot(document.getElementById("root")!).render(
         <Route path="/pizza/:id" element={<OnePizza />} />
         <Route path="/edit-pizza/:id" element={<EditPizza />} />
         <Route path="/new-pizza" element={<NewPizza />} />
-        <Route path="*" element={<h1>404</h1>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
     <ToastContainer theme="colored" />
