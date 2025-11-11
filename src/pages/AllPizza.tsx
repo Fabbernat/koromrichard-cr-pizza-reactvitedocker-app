@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import apiClient, { baseURL } from "../api/apiClient";
 import type { Pizza } from "../types/Pizza";
 import { toast } from "react-toastify";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AllPizza = () => {
+  const navigate = useNavigate();
+
   const [pizzak, setPizzak] = useState<Array<Pizza>>([]);
 
   useEffect(() => {
@@ -16,15 +18,32 @@ const AllPizza = () => {
 
   return (
     <>
-      {pizzak.map((p) => (
-        <div>
-          <Link to={`/pizza/${p.id}`}>
-            <h1>{p.nev}</h1>
-            <h2>{p.leiras}</h2>
-            <img width={200} src={`${baseURL}/kepek/${p.imageUrl}`} />
-          </Link>
-        </div>
-      ))}
+      <table>
+        <thead>
+          <th>Név</th>
+          <th>Leírás</th>
+          <th>Ár</th>
+          <th>Kép</th>
+          <th>Megtekintés</th>
+        </thead>
+        <tbody>
+          {pizzak.map((p) => (
+            <tr>
+              <td>{p.nev}</td>
+              <td>{p.leiras}</td>
+              <td>{p.ar}</td>
+              <td>
+                <img width={100} src={`${baseURL}/kepek/${p.imageUrl}`} />
+              </td>
+              <td>
+                <button onClick={() => navigate(`/pizza/${p.id}`)}>
+                  Megtekintés
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </>
   );
 };
