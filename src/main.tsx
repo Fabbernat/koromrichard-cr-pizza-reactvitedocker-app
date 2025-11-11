@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import OnePizza from "./pages/OnePizza";
 import NewPizza from "./pages/NewPizza";
+import EditPizza from "./pages/EditPizza";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
@@ -13,6 +14,7 @@ createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<AllPizza />} />
         <Route path="/pizza/:id" element={<OnePizza />} />
+        <Route path="/edit-pizza/:id" element={<EditPizza />} />
         <Route path="/new-pizza" element={<NewPizza />} />
         <Route path="*" element={<h1>404</h1>} />
       </Routes>

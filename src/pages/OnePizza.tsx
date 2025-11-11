@@ -27,6 +27,10 @@ const OnePizza = () => {
       .catch(() => toast.error("Sikertelen törlés!"));
   };
 
+  const editPizza = () => {
+    navigate(`/edit-pizza/${id}`);
+  };
+
   return (
     <>
       {pizza ? (
@@ -35,7 +39,7 @@ const OnePizza = () => {
           <h2>{pizza.leiras}</h2>
           <img width={200} src={`${baseURL}/kepek/${pizza.imageUrl}`} />
           <br />
-          <button>Szerkesztés</button>
+          <button onClick={editPizza}>Szerkesztés</button>
           <button onClick={deletePizza}>Törlés</button>
         </>
       ) : (
