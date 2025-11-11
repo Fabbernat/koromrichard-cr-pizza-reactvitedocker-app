@@ -22,8 +22,16 @@ const EditPizza = () => {
   }, [id]);
 
   const submit = () => {
+    const dto: Pizza = {
+      // nem minden mezőt kell elküldenem, az ID-t pl. nem
+      nev: pizza.nev,
+      leiras: pizza.leiras,
+      ar: pizza.ar,
+      imageUrl: pizza.imageUrl,
+    };
+
     apiClient
-      .put(`/pizzak/${id}`, pizza)
+      .put(`/pizzak/${id}`, dto)
       .then(() => toast.success("Sikeres szerkesztés!"))
       .catch(() => toast.error("Sikertelen szerkesztés!"));
   };
