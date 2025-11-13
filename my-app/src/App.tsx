@@ -7,6 +7,7 @@ import Pizzak from './pages/Pizzak'
 import PizzaPage from './pages/PizzaPage'
 import NewPizza from './pages/NewPizza'
 import EditPizza from './pages/EditPizza'
+import { Container, Row, Col } from 'react-bootstrap';
 
 function App() {
   const [pizzak, setPizzak] = useState<Array<Pizza>>([])
@@ -71,7 +72,19 @@ function App() {
         </div>
       ))}
     </>
+
+    
   )
+
+  return (
+      <Container>
+        <Row>
+          {pizzak.map((pizza) => (
+            <Col key={pizza.id} xs={12} sm={6} md={4} lg={3} className="mb-4"></Col>
+              ))}
+        </Row>
+      </Container>
+    );
 }
 
 export default App
