@@ -1,9 +1,0 @@
-{
-  "dependencies": {
-    "@tailwindcss/vite": "^4.1.17",
-    "bootstrap": "^5.3.8",
-    "react-bootstrap": "^2.10.10",
-    "react-toastify": "^11.0.5",
-    "tailwindcss": "^4.1.17"
-  }
-}
