@@ -11,14 +11,13 @@ import MainLayout from './layouts/MainLayout.tsx'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
-
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
         {/* All pages share MainLayout */}
         <Route path="/" element={<MainLayout />} />
-
+        <Route path="/*" element={<MainLayout />}></Route>
         {/* Landing page */}
         <Route index element={<App />} />
 

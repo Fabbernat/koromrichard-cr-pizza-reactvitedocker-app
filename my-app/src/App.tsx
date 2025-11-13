@@ -18,31 +18,32 @@ function App() {
     toast.success("Pizzák sikeresen betöltve!");
 
     apiClient
-    .get('/pizzak')
-    .then((response) => setPizzak(response.data))
-    .catch((err) => {
-      console.error(err)
-      toast.error("Hiba a pizzák lekérésekor!") // <-- show error toast
-    })
-}, [])
+      .get('/pizzak')
+      .then((response) => setPizzak(response.data))
+      .catch((err) => {
+        console.error(err)
+        toast.error("Hiba a pizzák lekérésekor!") // <-- show error toast
+      })
+  }, [])
 
 
   return (
     <>
+    
       <p>HELLÓ!!!</p>
       <div>
         <Link to="/"><h1>Főoldal</h1></Link>
-          <Link to="/pizzak"><h2>Pizzák megtekintése</h2></Link>
-          <Link to="new-pizza"><h3>Új pizza létrehozása</h3></Link>
-          <Link to="edit-pizza/1"><h3>Pizza szerkesztése</h3></Link>
-          <Link to="delete-pizza/1"><h3>Pizza törlése</h3></Link>
+        <Link to="/pizzak"><h2>Pizzák megtekintése</h2></Link>
+        <Link to="new-pizza"><h3>Új pizza létrehozása</h3></Link>
+        <Link to="edit-pizza/1"><h3>Pizza szerkesztése</h3></Link>
+        <Link to="delete-pizza/1"><h3>Pizza törlése</h3></Link>
         <nav style={{
           display: "grid",
           gridTemplateColumns: "repeat(4, 1fr)",
           gap: "1rem",
           backgroundColor: "#fffb00ff",
         }}>
-          
+
           <Link to="/pizzak/1"><h3>Pizza 1</h3></Link>
           <Link to="/pizzak/2"><h3>Pizza 2</h3></Link>
           <Link to="/pizzak/3"><h3>Pizza 3</h3></Link>
@@ -60,7 +61,7 @@ function App() {
           <Link to="/pizzak/15"><h3>Pizza 15</h3></Link>
           <Link to="/pizzak/16"><h3>Pizza 16</h3></Link>
 
-          
+
 
         </nav>
         <Routes>
@@ -80,17 +81,17 @@ function App() {
         </div>
       ))}
 
-      <ToastContainer 
-      position="top-right"
-      autoClose={3000}
-      hideProgressBar={false}
-      newestOnTop
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-    />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
 
       <Container>
         <Row>
@@ -100,7 +101,8 @@ function App() {
         </Row>
       </Container>
 
-          </>)
+    </>
+  )
 }
 
 export default App
