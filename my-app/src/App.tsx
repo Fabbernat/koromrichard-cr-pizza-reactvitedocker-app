@@ -23,8 +23,10 @@ function App() {
       <p>HELLÓ!!!</p>
       <div>
         <Link to="/"><h1>Főoldal</h1></Link>
-          <Link to="/pizzak"><h2>Pizzák</h2></Link>
-          
+          <Link to="/pizzak"><h2>Pizzák megtekintése</h2></Link>
+          <Link to="new-pizza"><h3>Új pizza létrehozása</h3></Link>
+          <Link to="edit-pizza/1"><h3>Pizza szerkesztése</h3></Link>
+          <Link to="delete-pizza/1"><h3>Pizza törlése</h3></Link>
         <nav style={{
           display: "grid",
           gridTemplateColumns: "repeat(4, 1fr)",
@@ -49,10 +51,7 @@ function App() {
           <Link to="/pizzak/15"><h3>Pizza 15</h3></Link>
           <Link to="/pizzak/16"><h3>Pizza 16</h3></Link>
 
-          <br />
-          <Link to="new-pizza"><h3>Új pizza</h3></Link>
-          <br />
-          <Link to="edit-pizza/1"><h3>Pizza szerkesztése</h3></Link>
+          
 
         </nav>
         <Routes>
