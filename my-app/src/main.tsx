@@ -8,6 +8,8 @@ import NewPizza from './pages/NewPizza.tsx'
 import Pizzak from './pages/Pizzak.tsx'
 import { EditPizza } from './pages/EditPizza.tsx'
 import MainLayout from './layouts/MainLayout.tsx'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 
 createRoot(document.getElementById('root')!).render(

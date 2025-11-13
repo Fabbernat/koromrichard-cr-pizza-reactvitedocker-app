@@ -8,16 +8,24 @@ import PizzaPage from './pages/PizzaPage'
 import NewPizza from './pages/NewPizza'
 import EditPizza from './pages/EditPizza'
 import { Container, Row, Col } from 'react-bootstrap';
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
   const [pizzak, setPizzak] = useState<Array<Pizza>>([])
 
   useEffect(() => {
-    apiClient.
-      get('/pizzak')
-      .then((response) => setPizzak(response.data))
-      .catch((result) => console.error(result))
-  }, [])
+    toast.success("Pizzák sikeresen betöltve!");
+
+    apiClient
+    .get('/pizzak')
+    .then((response) => setPizzak(response.data))
+    .catch((err) => {
+      console.error(err)
+      toast.error("Hiba a pizzák lekérésekor!") // <-- show error toast
+    })
+}, [])
+
 
   return (
     <>
@@ -71,20 +79,28 @@ function App() {
           <img src={`${BACKEND_URL}/kepek/${pizza.imageUrl}`} alt={pizza.nev} width={300} />
         </div>
       ))}
-    </>
 
-    
-  )
+      <ToastContainer 
+      position="top-right"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+    />
 
-  return (
       <Container>
         <Row>
           {pizzak.map((pizza) => (
             <Col key={pizza.id} xs={12} sm={6} md={4} lg={3} className="mb-4"></Col>
-              ))}
+          ))}
         </Row>
       </Container>
-    );
+
+          </>)
 }
 
 export default App
