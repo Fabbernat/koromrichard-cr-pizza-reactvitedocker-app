@@ -22,8 +22,7 @@ const EditPizza = () => {
   }, [id]);
 
   const submit = () => {
-    const dto: Pizza = {
-      // nem minden mezőt kell elküldenem, az ID-t pl. nem
+    const dto = {
       nev: pizza.nev,
       leiras: pizza.leiras,
       ar: pizza.ar,
