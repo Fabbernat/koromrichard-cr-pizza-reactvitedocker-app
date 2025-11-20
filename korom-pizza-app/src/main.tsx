@@ -11,11 +11,18 @@ import MainLayout from './layouts/MainLayout'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AllPizza from './pages/AllPizza.tsx'
+import NotFoundPage from './pages/errors/NotFoundPage.tsx'
+import OnePizza from './pages/OnePizza.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<AllPizza />} />
+        <Route path="/pizza/:id" element={<OnePizza />} />
+        <Route path="/edit-pizza/:id" element={<EditPizza />} />
+        <Route path="/new-pizza" element={<NewPizza />} />
+        <Route path="*" element={<NotFoundPage />} />
         <Route path="/" element={<AllPizza />}>
           <Route index element={<App />} />
           <Route path="pizzak" element={<Pizzak />} />
@@ -23,11 +30,11 @@ createRoot(document.getElementById('root')!).render(
           <Route path="new-pizza" element={<NewPizza />} />
           <Route path="edit-pizza/:id" element={<EditPizza />} />
           <Route path="edit-pizza" element={<Navigate to="/" replace />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
-    <ToastContainer position="top-right" autoClose={3000} />
+    <ToastContainer  theme="colored" position="top-right" autoClose={3000} />
   </StrictMode>
 )
 

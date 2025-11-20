@@ -5,7 +5,16 @@ import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 
 export const EditPizza = () => {
-    const {id} = useParams();
+    const { id } = useParams();
+
+  const [pizza, setPizza] = useState<Pizza>({
+    nev: "",
+    leiras: "",
+    ar: 0,
+    imageUrl: "",
+  });
+
+  
     const [nev, setNev] = useState<string>('');
     const [leiras, setLeiras] = useState<string>('');
     const [ar, setAr] = useState<number>(0);
@@ -14,45 +23,58 @@ export const EditPizza = () => {
     useEffect(() => {
         apiClient
             .get(`/pizzak/${Number(id)}`)
-            .then((response) => {
-                setNev(response.data.nev ?? "");
-                setLeiras(response.data.leiras ?? "");
-                setAr(Number(response.data.ar) ?? 0);
-                setImageUrl(response.data.imageUrl ?? "");
-            })
-            .catch((result) => toast.error(result));
+            .then((response) => setPizza(response.data))
+            .catch(() => toast.error("Hiba a pizza lekérésekor!"));
     }, [id]);
 
-    const onSubmit = () => {
-        const pizza: Pizza = {
-            nev,
-            leiras,
-            ar,
-            imageUrl
-        };
-
-        apiClient
-            .put(`/pizzak/${Number(id)}`, pizza)
-            .then((response) => toast.success(response.statusText))
-            .catch((result) => toast.error("Hiba a pizza módosításakor:", result));
+    const submit = () => {
+    const dto = {
+      nev: pizza.nev,
+      leiras: pizza.leiras,
+      ar: pizza.ar,
+      imageUrl: pizza.imageUrl,
     };
+
+    apiClient
+      .put(`/pizzak/${id}`, dto)
+      .then(() => toast.success("Sikeres szerkesztés!"))
+      .catch(() => toast.error("Sikertelen szerkesztés!"));
+  };
 
     return (
         <>
             <h1>Pizza szerkesztése</h1>
 
-            <h2>Név:</h2>
-            <input type="text" placeholder="Név" value={nev} onChange={(e) => setNev(e.target.value)} />
+            <h1>Név:</h1>
+      <input
+        type="text"
+        value={pizza.nev}
+        onChange={(e) => setPizza({ ...pizza, nev: e.target.value })}
+      />
 
-            <h2>Leírás:</h2>
-            <input type="text" placeholder="Leírás" value={leiras} onChange={(e) => setLeiras(e.target.value)} />
+      <h1>Leírás</h1>
+      <input
+        type="text"
+        value={pizza.leiras}
+        onChange={(e) => setPizza({ ...pizza, leiras: e.target.value })}
+      />
 
-            <h2>Ár:</h2>
-            <input type="number" placeholder="Ár" value={ar} onChange={(e) => setAr(Number(e.target.value))} />
+      <h1>Ár</h1>
+      <input
+        type="number"
+        value={pizza.ar}
+        onChange={(e) => setPizza({ ...pizza, ar: Number(e.target.value) })}
+      />
 
-            <h2>Kép URL:</h2>
-            <input type="text" placeholder="Kép URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
-            <button onClick={onSubmit}>Módosít</button>
+      <h1>Kép URL</h1>
+      <input
+        type="text"
+        value={pizza.imageUrl}
+        onChange={(e) => setPizza({ ...pizza, imageUrl: e.target.value })}
+      />
+
+      <br />
+      <button onClick={submit}>Módosít</button>
         </>
     )
 }

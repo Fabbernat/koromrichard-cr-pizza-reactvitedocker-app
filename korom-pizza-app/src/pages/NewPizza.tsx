@@ -1,43 +1,56 @@
-import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import apiClient from '../api/ApiClient';
-import type { Pizza } from '../types/Pizza';
+import { useState } from "react";
+import type { Pizza } from "../types/Pizza";
 import { toast } from "react-toastify";
+import apiClient from "../api/ApiClient";
 
-export const NewPizza = () => {
-    const { id } = useParams();
-    const [nev, setNev] = useState<string>('');
-    const [leiras, setLeiras] = useState<string>('');
-    const [ar, setAr] = useState<number>(0);
-    const [imageUrl, setImageUrl] = useState<string>('');
+const NewPizza = () => {
+  const [pizza, setPizza] = useState<Pizza>({
+    nev: "",
+    leiras: "",
+    ar: 0,
+    imageUrl: "",
+  });
 
-    const onSubmit = () => {
-        const newPizza: Pizza = { nev, leiras, ar, imageUrl };
-        apiClient.post('/pizzak', newPizza)
-            .then((response) => {
-                toast.info('Pizza added:', response.data); 
-                setNev('');
-                setLeiras('');
-                setAr(0);
-                setImageUrl('');
-            })
-            .catch((error) => toast.error('Error adding pizza:', error));
-    }
+  const submit = () => {
+    apiClient
+      .post("/pizzak", pizza)
+      .then(() => toast.success("Sikeres hozzáadás!"))
+      .catch(() => toast.error("Sikertelen hozzáadás!"));
+  };
     
     return (
     <>
     <div><h1>Új pizza felvétele a rendszerbe</h1></div>
     <form>
         <h2>Név:</h2>
-        <input type="text" placeholder="Név" value={nev} onChange={(e) => setNev(e.target.value)} />
-        <h2>Leírás:</h2>
-        <input type="text" placeholder="Leírás" value={leiras} onChange={(e) => setLeiras(e.target.value)} />
-        <h2>Ár:</h2>
-        <input type="number" placeholder="Ár" value={ar} onChange={(e) => setAr(Number(e.target.value))} />
-        <h2>Kép URL:</h2>
-        <input type="text" placeholder="Kép URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
+        <input
+        type="text"
+        value={pizza.nev}
+        onChange={(e) => setPizza({ ...pizza, nev: e.target.value })}
+      />
+
+      <h1>Leírás</h1>
+      <input
+        type="text"
+        value={pizza.leiras}
+        onChange={(e) => setPizza({ ...pizza, leiras: e.target.value })}
+      />
+
+      <h1>Ár</h1>
+      <input
+        type="number"
+        value={pizza.ar}
+        onChange={(e) => setPizza({ ...pizza, ar: Number(e.target.value) })}
+      />
+
+      <h1>Kép URL</h1>
+      <input
+        type="text"
+        value={pizza.imageUrl}
+        onChange={(e) => setPizza({ ...pizza, imageUrl: e.target.value })}
+      />
         <div>
-            <button style={{ margin: '10px' }} onClick={onSubmit}>Pizza felvétele</button>
+            <button style={{ margin: '10px' }} onClick={submit}>Pizza felvétele</button>
         </div>
     </form>
     </>
