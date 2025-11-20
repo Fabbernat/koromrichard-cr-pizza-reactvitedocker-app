@@ -1,8 +1,8 @@
 import { use, useEffect, useState } from "react";
-import {apiClient} from '../api/ApiClient';
+import apiClient  from '../api/ApiClient';
 import type { Pizza } from '../types/Pizza';
 import { useParams } from "react-router-dom";
-import { toast } from "react-toastify/unstyled";
+import { toast } from "react-toastify";
 
 export const EditPizza = () => {
     const {id} = useParams();

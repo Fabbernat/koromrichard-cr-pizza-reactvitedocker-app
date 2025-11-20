@@ -10,12 +10,13 @@ import { EditPizza } from './pages/EditPizza.tsx'
 import MainLayout from './layouts/MainLayout'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AllPizza from './pages/AllPizza.tsx'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
+        <Route path="/" element={<AllPizza />}>
           <Route index element={<App />} />
           <Route path="pizzak" element={<Pizzak />} />
           <Route path="pizzak/:id" element={<PizzaPage />} />

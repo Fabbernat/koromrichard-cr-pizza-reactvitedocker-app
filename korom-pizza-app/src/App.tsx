@@ -1,7 +1,7 @@
 import { useEffect, useState, type SetStateAction } from 'react'
 import './App.css'
 import type { Pizza } from './types/Pizza'
-import { apiClient, BACKEND_URL } from './api/ApiClient' // az `apiClient` kimozdítható a {}-en kívülre
+import  apiClient,{ BACKEND_URL } from './api/ApiClient' // az `apiClient` kimozdítható a {}-en kívülre
 import { Link, Route, Routes } from 'react-router-dom'
 import Pizzak from './pages/Pizzak'
 import PizzaPage from './pages/PizzaPage'
