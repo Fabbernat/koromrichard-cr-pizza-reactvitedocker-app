@@ -25,15 +25,20 @@ export const NewPizza = () => {
     
     return (
     <>
-    <h2>Név:</h2>
-    <input type="text" placeholder="Név" value={nev} onChange={(e) => setNev(e.target.value)} />
-    <h2>Leírás:</h2>
-    <input type="text" placeholder="Leírás" value={leiras} onChange={(e) => setLeiras(e.target.value)} />
-    <h2>Ár:</h2>
-    <input type="number" placeholder="Ár" value={ar} onChange={(e) => setAr(Number(e.target.value))} />
-    <h2>Kép URL:</h2>
-    <input type="text" placeholder="Kép URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
-    <button onClick={onSubmit}>Add Pizza</button>
+    <div><h1>Új pizza felvétele a rendszerbe</h1></div>
+    <form>
+        <h2>Név:</h2>
+        <input type="text" placeholder="Név" value={nev} onChange={(e) => setNev(e.target.value)} />
+        <h2>Leírás:</h2>
+        <input type="text" placeholder="Leírás" value={leiras} onChange={(e) => setLeiras(e.target.value)} />
+        <h2>Ár:</h2>
+        <input type="number" placeholder="Ár" value={ar} onChange={(e) => setAr(Number(e.target.value))} />
+        <h2>Kép URL:</h2>
+        <input type="text" placeholder="Kép URL" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} />
+        <div>
+            <button style={{ margin: '10px' }} onClick={onSubmit}>Pizza felvétele</button>
+        </div>
+    </form>
     </>
     )
 }
