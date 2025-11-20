@@ -35,16 +35,14 @@ function App() {
         <Link to="/"><h1>Főoldal</h1></Link>
         <Link to="/pizzak"><h2>Pizzák megtekintése</h2></Link>
         <Link to="new-pizza"><h3>Új pizza létrehozása</h3></Link>
-        <Link to="edit-pizza/1"><h3>Pizza szerkesztése</h3></Link>
-        <Link to="delete-pizza/1"><h3>Pizza törlése</h3></Link>
         <nav style={{
           display: "grid",
           gridTemplateColumns: "repeat(4, 1fr)",
           gap: "1rem",
           backgroundColor: "#fffb00ff",
         }}>
-
-          <Link to="/pizzak/1"><h3>Pizza 1</h3></Link>
+          for i in range(len(pizzak)):
+            <Link to=f"/pizzak/{i}"><h3>Pizza {i}</h3></Link>
           <Link to="/pizzak/2"><h3>Pizza 2</h3></Link>
           <Link to="/pizzak/3"><h3>Pizza 3</h3></Link>
           <Link to="/pizzak/4"><h3>Pizza 4</h3></Link>
@@ -61,6 +59,8 @@ function App() {
           <Link to="/pizzak/15"><h3>Pizza 15</h3></Link>
           <Link to="/pizzak/16"><h3>Pizza 16</h3></Link>
 
+          <Link to="edit-pizza/1"><h3>Pizza szerkesztése</h3></Link>
+        <Link to="delete-pizza/1"><h3>Pizza törlése</h3></Link>
 
 
         </nav>
