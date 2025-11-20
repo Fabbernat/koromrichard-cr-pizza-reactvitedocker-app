@@ -20,7 +20,10 @@ export default function MainLayout() {
       </nav>
 
       {/* ✅ This is where each page gets rendered */}
+      <div className="container">
+      <h1>Pizza Layout</h1>
       <Outlet />
+    </div>
     </div>
   );
 }

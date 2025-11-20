@@ -2,6 +2,7 @@ import { use, useEffect, useState } from "react";
 import {apiClient} from '../api/ApiClient';
 import type { Pizza } from '../types/Pizza';
 import { useParams } from "react-router-dom";
+import { toast } from "react-toastify/unstyled";
 
 export const EditPizza = () => {
     const {id} = useParams();
@@ -32,8 +33,8 @@ export const EditPizza = () => {
 
         apiClient
             .put(`/pizzak/${Number(id)}`, pizza)
-            .then((response) => alert(response.statusText))
-            .catch((result) => console.error("Hiba a pizza módosításakor:", result));
+            .then((response) => toast.success(response.statusText))
+            .catch((result) => toast.error("Hiba a pizza módosításakor:", result));
     };
 
     return (

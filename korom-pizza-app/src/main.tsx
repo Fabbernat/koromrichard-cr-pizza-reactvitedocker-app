@@ -9,30 +9,22 @@ import Pizzak from './pages/Pizzak.tsx'
 import { EditPizza } from './pages/EditPizza.tsx'
 import MainLayout from './layouts/MainLayout'
 
-
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        {/* Minden oldalba belekerül a MainLayout */}
-        <Route path="/" element={<MainLayout />} />
-        <Route path="/*" element={<MainLayout />}></Route>
-
-        {/* Kezdőlap */}
-        <Route index element={<App />} />
-
-        {/* Érvényes oldalak */}
-        <Route path="/pizzak" element={<Pizzak />} />
-        <Route path="/pizzak/:id" element={<PizzaPage />} />
-        <Route path="/new-pizza" element={<NewPizza />} />
-        <Route path="/edit-pizza/:id" element={<EditPizza />} />
-
-        {/* Ez még nem létezik */}
-        <Route path="edit-pizza" element={<Navigate to="/" replace />} />
-
-        {/* Elkap minden invalid path-ot */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="/" element={<MainLayout />}>
+          <Route index element={<App />} />
+          <Route path="pizzak" element={<Pizzak />} />
+          <Route path="pizzak/:id" element={<PizzaPage />} />
+          <Route path="new-pizza" element={<NewPizza />} />
+          <Route path="edit-pizza/:id" element={<EditPizza />} />
+          <Route path="edit-pizza" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Route>
       </Routes>
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 )
+
+
