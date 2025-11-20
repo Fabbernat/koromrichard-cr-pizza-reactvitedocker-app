@@ -20,7 +20,7 @@ export const EditPizza = () => {
                 setAr(Number(response.data.ar) ?? 0);
                 setImageUrl(response.data.imageUrl ?? "");
             })
-            .catch((result) => console.error(result));
+            .catch((result) => toast.error(result));
     }, [id]);
 
     const onSubmit = () => {

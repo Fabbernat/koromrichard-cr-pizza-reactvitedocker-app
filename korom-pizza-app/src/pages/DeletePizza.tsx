@@ -20,7 +20,7 @@ export const EditPizza = () => {
                 deleteAr(Number(response.data.ar) ?? 0);
                 deleteImageUrl(response.data.imageUrl ?? "");
             })
-            .catch((result) => console.error(result));
+            .catch((result) => toast.error(result));
     }, [id]);
 
     const onSubmit = () => {

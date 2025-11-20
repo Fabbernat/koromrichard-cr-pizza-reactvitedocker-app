@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import type { Pizza } from '../types/Pizza';
 import Card from 'react-bootstrap/Card';
 import { Button } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 export const PizzaPage = () => {
     const { id } = useParams();
@@ -12,7 +13,7 @@ export const PizzaPage = () => {
     useEffect(() => {
         apiClient.get(`/pizzak/${id}`)
             .then((response) => setPizza(response.data))
-            .catch((error) => console.error(error));
+            .catch((error) => toast.error(error));
     }, [id]);
 
     const generateCard = () => {

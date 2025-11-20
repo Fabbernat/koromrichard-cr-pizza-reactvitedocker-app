@@ -21,8 +21,8 @@ function App() {
       .get('/pizzak')
       .then((response: { data: SetStateAction<Pizza[]> }) => setPizzak(response.data))
       .catch((err: any) => {
-        console.error(err)
-        toast.error("Hiba a pizzák lekérésekor!") // <-- show error toast
+        toast.error(err)
+        toast.error("Hiba a pizzák lekérésekor!")
       })
   }, [])
 

@@ -8,6 +8,8 @@ import NewPizza from './pages/NewPizza.tsx'
 import Pizzak from './pages/Pizzak.tsx'
 import { EditPizza } from './pages/EditPizza.tsx'
 import MainLayout from './layouts/MainLayout'
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
@@ -24,6 +26,7 @@ createRoot(document.getElementById('root')!).render(
         </Route>
       </Routes>
     </BrowserRouter>
+    <ToastContainer position="top-right" autoClose={3000} />
   </StrictMode>
 )
 

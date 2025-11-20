@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {apiClient, BACKEND_URL } from '../api/ApiClient';
+import { toast } from "react-toastify";
 
 export const Pizzak = () => {
     const { id } = useParams();
@@ -9,7 +10,7 @@ export const Pizzak = () => {
     useEffect(() => {
         apiClient.get(`/pizzak/${id}`)
             .then((response) => setPizza(response.data))
-            .catch((error) => console.error(error));
+            .catch((error) => toast.error(error));
     }, [id]);
 
     return (
