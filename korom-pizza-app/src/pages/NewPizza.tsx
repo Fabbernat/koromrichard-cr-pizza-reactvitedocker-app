@@ -14,13 +14,13 @@ export const NewPizza = () => {
         const newPizza: Pizza = { nev, leiras, ar, imageUrl };
         apiClient.post('/pizzak', newPizza)
             .then((response) => {
-                console.log('Pizza added:', response.data); 
+                toast.info('Pizza added:', response.data); 
                 setNev('');
                 setLeiras('');
                 setAr(0);
                 setImageUrl('');
             })
-            .catch((error) => console.error('Error adding pizza:', error));
+            .catch((error) => toast.error('Error adding pizza:', error));
     }
     
     return (

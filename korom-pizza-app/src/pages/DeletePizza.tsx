@@ -19,7 +19,7 @@ export const EditPizza = () => {
                 deleteAr(Number(response.data.ar) ?? 0);
                 deleteImageUrl(response.data.imageUrl ?? "");
             })
-            .catch((result) => console.error(result));
+            .catch((result) => toast.error(result));
     }, [id]);
 
     const onSubmit = () => {
@@ -32,8 +32,8 @@ export const EditPizza = () => {
 
         apiClient
             .delete(`/pizzak/${Number(id)}`)
-            .then((response) => alert(response.statusText))
-            .catch((result) => console.error("Hiba a pizza törlésekor:", result));
+            .then((response) => toast.success(response.statusText))
+            .catch((result) => toast.error("Hiba a pizza törlésekor:", result));
     };
 
     return (

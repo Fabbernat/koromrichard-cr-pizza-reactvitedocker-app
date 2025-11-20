@@ -19,7 +19,7 @@ export const EditPizza = () => {
                 setAr(Number(response.data.ar) ?? 0);
                 setImageUrl(response.data.imageUrl ?? "");
             })
-            .catch((result) => console.error(result));
+            .catch((result) => toast.error(result));
     }, [id]);
 
     const onSubmit = () => {
@@ -32,8 +32,8 @@ export const EditPizza = () => {
 
         apiClient
             .put(`/pizzak/${Number(id)}`, pizza)
-            .then((response) => alert(response.statusText))
-            .catch((result) => console.error("Hiba a pizza módosításakor:", result));
+            .then((response) => toast.success(response.statusText))
+            .catch((result) => toast.error("Hiba a pizza módosításakor:", result));
     };
 
     return (

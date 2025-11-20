@@ -12,7 +12,7 @@ export const PizzaPage = () => {
     useEffect(() => {
         apiClient.get(`/pizzak/${id}`)
             .then((response) => setPizza(response.data))
-            .catch((error) => console.error(error));
+            .catch((error) => toast.error(error));
     }, [id]);
 
     const generateCard = () => {

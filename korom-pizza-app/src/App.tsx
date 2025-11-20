@@ -21,7 +21,7 @@ function App() {
       .get('/pizzak')
       .then((response) => setPizzak(response.data))
       .catch((err) => {
-        console.error(err)
+        toast.error(err)
         toast.error("Hiba a pizzák lekérésekor!") // <-- show error toast
       })
   }, [])
