@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {apiClient} from "../api/ApiClient";
-import type { Pizza } from "../types/Pizza";
+import {apiClient} from '../api/ApiClient';
+import type { Pizza } from '../types/Pizza';
 
 export const NewPizza = () => {
     const { id } = useParams();

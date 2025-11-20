@@ -1,6 +1,6 @@
 import { use, useEffect, useState } from "react";
-import {apiClient} from "../api/ApiClient";
-import type { Pizza } from "../types/Pizza";
+import {apiClient} from '../api/ApiClient';
+import type { Pizza } from '../types/Pizza';
 import { useParams } from "react-router-dom";
 
 export const EditPizza = () => {

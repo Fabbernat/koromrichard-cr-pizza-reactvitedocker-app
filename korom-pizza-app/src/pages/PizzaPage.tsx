@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
-import {apiClient, BACKEND_URL } from "../api/ApiClient";
+import {apiClient, BACKEND_URL } from '../api/ApiClient';
 import { useState, useEffect } from "react";
-import type { Pizza } from "../types/Pizza";
+import type { Pizza } from '../types/Pizza';
 import Card from 'react-bootstrap/Card';
 import { Button } from "react-bootstrap";
 
