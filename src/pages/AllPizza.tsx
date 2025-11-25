@@ -9,6 +9,9 @@ const AllPizza = () => {
   const navigate = useNavigate();
 
   const [pizzak, setPizzak] = useState<Array<Pizza>>([]);
+  const [kosar, setKosar] = useState<Array<number>>(
+    JSON.parse(localStorage.getItem("kosar") ?? "[]")
+  ); // csak ID-kat tárolok
 
   useEffect(() => {
     apiClient
@@ -16,6 +19,10 @@ const AllPizza = () => {
       .then((response) => setPizzak(response.data))
       .catch(() => toast.error("A pizzák betöltése sikertelen volt"));
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem("kosar", JSON.stringify(kosar));
+  }, [kosar]);
 
   const generateCard = (p: Pizza) => {
     return (
@@ -30,6 +37,15 @@ const AllPizza = () => {
               variant="success"
             >
               Megtekintés
+            </Button>
+            <Button
+              onClick={() => {
+                setKosar([...kosar, Number(p.id)]);
+                toast.success("Sikeresen a kosárba tetted a terméket!");
+              }}
+              variant="info"
+            >
+              Kosárba
             </Button>
           </Card.Body>
         </Card>
