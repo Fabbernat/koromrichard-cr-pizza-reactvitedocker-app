@@ -34,7 +34,7 @@ const AllPizza = () => {
             <Card.Text>{p.leiras}</Card.Text>
             <Button
               onClick={() => navigate(`/pizza/${p.id}`)}
-              variant="success"
+              variant="primary"
             >
               Megtekintés
             </Button>
@@ -43,7 +43,7 @@ const AllPizza = () => {
                 setKosar([...kosar, Number(p.id)]);
                 toast.success("Sikeresen a kosárba tetted a terméket!");
               }}
-              variant="info"
+              variant="success"
             >
               Kosárba
             </Button>
