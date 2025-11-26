@@ -26,8 +26,8 @@ const Cart = () => {
   }, [kosar]);
 
   // elem törlése a kosárból index alapján
-  const removeItem = (index: number) => {
-    setKosar(kosar.filter((v, i) => i !== index));
+  const removeItem = (searchedIndex: number) => {
+    setKosar(kosar.filter((v, i) => i !== searchedIndex));
   };
 
   return (
