@@ -28,6 +28,7 @@ const Cart = () => {
   // elem törlése a kosárból index alapján
   const removeItem = (searchedIndex: number) => {
     setKosar(kosar.filter((v, i) => i !== searchedIndex));
+    toast.success("Sikeres törlés!");
   };
 
   return (
