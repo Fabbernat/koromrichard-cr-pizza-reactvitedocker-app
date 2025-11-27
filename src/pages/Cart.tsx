@@ -50,7 +50,7 @@ const Cart = () => {
                 <td>{pizza?.ar} Ft</td>
                 <td>
                   <Button onClick={() => removeItem(index)} variant="danger">
-                    <FaTrash />
+                    Törlés&nbsp;<FaTrash />
                   </Button>
                 </td>
               </tr>
