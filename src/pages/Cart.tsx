@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
-import apiClient from "../api/apiClient";
+import apiClient, { baseURL } from "../api/apiClient";
 import type { Pizza } from "../types/Pizza";
 import { Button, Table } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
@@ -45,6 +45,7 @@ const Cart = () => {
 
             return (
               <tr>
+                <td><img src={`${baseURL}/kepek/${pizza?.imageUrl}`} width={200}/></td>
                 <td>{pizza?.nev}</td>
                 <td>{pizza?.ar} Ft</td>
                 <td>
