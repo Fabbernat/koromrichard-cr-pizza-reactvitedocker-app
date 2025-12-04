@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import apiClient, { baseURL } from "../api/apiClient";
-import type { Car } from "../types/Car";
-import { toast } from "react-toastify";
+import { useState, useEffect } from "react";
+import { Col, Button, Card, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { toast } from "react-toastify";
+import apiClient, {baseURL} from "../api/apiClient";
+import type { Car } from "../types/Car";
 
-const AllPizza = () => {
+const AllCar = () => {
   const navigate = useNavigate();
 
   const [cars, setCars] = useState<Array<Car>>([]);
@@ -23,7 +23,6 @@ const AllPizza = () => {
   useEffect(() => {
     localStorage.setItem("kosar", JSON.stringify(kosar));
   }, [kosar]);
-
   const generateCard = (p: Car) => {
     return (
       <Col>
@@ -62,4 +61,4 @@ const AllPizza = () => {
   );
 };
 
-export default AllPizza;
+export default AllCar;

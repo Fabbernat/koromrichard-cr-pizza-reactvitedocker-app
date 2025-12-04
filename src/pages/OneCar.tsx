@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
-import { Col, Container, Row } from "react-bootstrap";
+import { Button, Col, Container, Row } from "react-bootstrap";
 import type { Car } from "../types/Car";
 import apiClient, { baseURL } from "../api/apiClient";
 
@@ -40,7 +40,22 @@ const OneCar = () => {
           <Col sm={8}>
             <h1>{car.modell}</h1>
             <h2>{car.leiras}</h2>
+
+            <Button variant="warning" onClick={editCar}>
+              Szerkesztés
+            </Button>
+            <Button variant="danger" onClick={deleteCar}>
+              Törlés
+            </Button>
           </Col>
+          <Col sm={4}>{car.images.map(image => (
+            <img
+              key={image}
+                src={`${baseURL}/${image}`}
+                alt={car.modell}
+                style={{ width: "100%", marginBottom: "10px" }}
+              />
+          ))}</Col>
         </Row>
       ) : (
         <div>Loading...</div>

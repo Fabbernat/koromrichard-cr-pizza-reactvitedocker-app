@@ -1,23 +1,23 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import AllPizza from "./pages/AllPizza";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import OnePizza from "./pages/OnePizza";
-import NewPizza from "./pages/NewPizza";
-import EditPizza from "./pages/EditPizza";
 import NotFoundPage from "./pages/errors/NotFoundPage";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Cart from "./pages/Cart";
+import AllCar from "./pages/AllCar";
+import OneCar from "./pages/OneCar";
+import EditCar from "./pages/EditCar";
+import NewCar from "./pages/NewCar";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<AllPizza />} />
-        <Route path="/car/:id" element={<OnePizza />} />
-        <Route path="/edit-car/:id" element={<EditPizza />} />
-        <Route path="/new-car" element={<NewPizza />} />
+        <Route path="/" element={<AllCar />} />
+        <Route path="/car/:id" element={<OneCar />} />
+        <Route path="/edit-car/:id" element={<EditCar />} />
+        <Route path="/new-car" element={<NewCar />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
