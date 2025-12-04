@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import type { Pizza } from "../types/Pizza";
+import type { Car } from "../types/Car";
 import apiClient from "../api/apiClient";
 import { toast } from "react-toastify";
 import { useParams } from "react-router-dom";
@@ -7,7 +7,7 @@ import { useParams } from "react-router-dom";
 const EditPizza = () => {
   const { id } = useParams();
 
-  const [pizza, setPizza] = useState<Pizza>({
+  const [car, setPizza] = useState<Car>({
     nev: "",
     leiras: "",
     ar: 0,
@@ -23,10 +23,10 @@ const EditPizza = () => {
 
   const submit = () => {
     const dto = {
-      nev: pizza.nev,
-      leiras: pizza.leiras,
-      ar: pizza.ar,
-      imageUrl: pizza.imageUrl,
+      nev: car.nev,
+      leiras: car.leiras,
+      ar: car.ar,
+      imageUrl: car.imageUrl,
     };
 
     apiClient
@@ -40,29 +40,29 @@ const EditPizza = () => {
       <h1>Név:</h1>
       <input
         type="text"
-        value={pizza.nev}
-        onChange={(e) => setPizza({ ...pizza, nev: e.target.value })}
+        value={car.nev}
+        onChange={(e) => setPizza({ ...car, nev: e.target.value })}
       />
 
       <h1>Leírás</h1>
       <input
         type="text"
-        value={pizza.leiras}
-        onChange={(e) => setPizza({ ...pizza, leiras: e.target.value })}
+        value={car.leiras}
+        onChange={(e) => setPizza({ ...car, leiras: e.target.value })}
       />
 
       <h1>Ár</h1>
       <input
         type="number"
-        value={pizza.ar}
-        onChange={(e) => setPizza({ ...pizza, ar: Number(e.target.value) })}
+        value={car.ar}
+        onChange={(e) => setPizza({ ...car, ar: Number(e.target.value) })}
       />
 
       <h1>Kép URL</h1>
       <input
         type="text"
-        value={pizza.imageUrl}
-        onChange={(e) => setPizza({ ...pizza, imageUrl: e.target.value })}
+        value={car.imageUrl}
+        onChange={(e) => setPizza({ ...car, imageUrl: e.target.value })}
       />
 
       <br />

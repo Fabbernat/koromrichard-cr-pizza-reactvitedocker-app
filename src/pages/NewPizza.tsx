@@ -1,10 +1,10 @@
 import { useState } from "react";
-import type { Pizza } from "../types/Pizza";
+import type { Car } from "../types/Car";
 import apiClient from "../api/apiClient";
 import { toast } from "react-toastify";
 
 const NewPizza = () => {
-  const [pizza, setPizza] = useState<Pizza>({
+  const [car, setPizza] = useState<Car>({
     nev: "",
     leiras: "",
     ar: 0,
@@ -13,7 +13,7 @@ const NewPizza = () => {
 
   const submit = () => {
     apiClient
-      .post("/pizzak", pizza)
+      .post("/pizzak", car)
       .then(() => toast.success("Sikeres hozzáadás!"))
       .catch(() => toast.error("Sikertelen hozzáadás!"));
   };
@@ -23,29 +23,29 @@ const NewPizza = () => {
       <h1>Név:</h1>
       <input
         type="text"
-        value={pizza.nev}
-        onChange={(e) => setPizza({ ...pizza, nev: e.target.value })}
+        value={car.nev}
+        onChange={(e) => setPizza({ ...car, nev: e.target.value })}
       />
 
       <h1>Leírás</h1>
       <input
         type="text"
-        value={pizza.leiras}
-        onChange={(e) => setPizza({ ...pizza, leiras: e.target.value })}
+        value={car.leiras}
+        onChange={(e) => setPizza({ ...car, leiras: e.target.value })}
       />
 
       <h1>Ár</h1>
       <input
         type="number"
-        value={pizza.ar}
-        onChange={(e) => setPizza({ ...pizza, ar: Number(e.target.value) })}
+        value={car.ar}
+        onChange={(e) => setPizza({ ...car, ar: Number(e.target.value) })}
       />
 
       <h1>Kép URL</h1>
       <input
         type="text"
-        value={pizza.imageUrl}
-        onChange={(e) => setPizza({ ...pizza, imageUrl: e.target.value })}
+        value={car.imageUrl}
+        onChange={(e) => setPizza({ ...car, imageUrl: e.target.value })}
       />
 
       <br />

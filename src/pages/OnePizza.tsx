@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import type { Pizza } from "../types/Pizza";
+import type { Car } from "../types/Car";
 import { toast } from "react-toastify";
 import apiClient, { baseURL } from "../api/apiClient";
 import { Button, Col, Container, Row } from "react-bootstrap";
@@ -9,7 +9,7 @@ const OnePizza = () => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  const [pizza, setPizza] = useState<Pizza>();
+  const [car, setPizza] = useState<Car>();
 
   useEffect(() => {
     apiClient
@@ -29,16 +29,16 @@ const OnePizza = () => {
   };
 
   const editPizza = () => {
-    navigate(`/edit-pizza/${id}`);
+    navigate(`/edit-car/${id}`);
   };
 
   return (
     <Container>
-      {pizza ? (
+      {car ? (
         <Row>
           <Col sm={8}>
-            <h1>{pizza.nev}</h1>
-            <h2>{pizza.leiras}</h2>
+            <h1>{car.marka}</h1>
+            <h2>{car.leiras}</h2>
 
             <Button variant="warning" onClick={editPizza}>
               Szerkesztés
@@ -48,11 +48,13 @@ const OnePizza = () => {
             </Button>
           </Col>
           <Col sm={4}>
-            <img width={200} src={`${baseURL}/kepek/${pizza.imageUrl}`} />
+            {car.images.map((img, i) => (
+              <img key={i} width={200} src={`${baseURL}/kepek/${img}`} />
+            ))}
           </Col>
         </Row>
       ) : (
-        <>A pizza nem található!</>
+        <>A car nem található!</>
       )}
     </Container>
   );

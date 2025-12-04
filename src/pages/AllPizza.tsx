@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import apiClient, { baseURL } from "../api/apiClient";
-import type { Pizza } from "../types/Pizza";
+import type { Car } from "../types/Car";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { Button, Card, Col, Container, Row } from "react-bootstrap";
@@ -8,7 +8,7 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 const AllPizza = () => {
   const navigate = useNavigate();
 
-  const [pizzak, setPizzak] = useState<Array<Pizza>>([]);
+  const [pizzak, setPizzak] = useState<Array<Car>>([]);
   const [kosar, setKosar] = useState<Array<number>>(
     JSON.parse(localStorage.getItem("kosar") ?? "[]")
   ); // csak ID-kat tárolok
@@ -24,7 +24,7 @@ const AllPizza = () => {
     localStorage.setItem("kosar", JSON.stringify(kosar));
   }, [kosar]);
 
-  const generateCard = (p: Pizza) => {
+  const generateCard = (p: Car) => {
     return (
       <Col>
         <Card style={{ width: "18rem" }}>
@@ -33,7 +33,7 @@ const AllPizza = () => {
             <Card.Title>{p.nev}</Card.Title>
             <Card.Text>{p.leiras}</Card.Text>
             <Button
-              onClick={() => navigate(`/pizza/${p.id}`)}
+              onClick={() => navigate(`/car/${p.id}`)}
               variant="primary"
             >
               Megtekintés

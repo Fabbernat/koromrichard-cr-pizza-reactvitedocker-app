@@ -15,9 +15,9 @@ createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<AllPizza />} />
-        <Route path="/pizza/:id" element={<OnePizza />} />
-        <Route path="/edit-pizza/:id" element={<EditPizza />} />
-        <Route path="/new-pizza" element={<NewPizza />} />
+        <Route path="/car/:id" element={<OnePizza />} />
+        <Route path="/edit-car/:id" element={<EditPizza />} />
+        <Route path="/new-car" element={<NewPizza />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

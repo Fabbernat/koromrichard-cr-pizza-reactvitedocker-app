@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import apiClient, { baseURL } from "../api/apiClient";
-import type { Pizza } from "../types/Pizza";
+import type { Car } from "../types/Car";
 import { Button, Table } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 
 const Cart = () => {
   // pizzák betöltése az API-ról
-  const [pizzak, setPizzak] = useState<Array<Pizza>>([]);
+  const [pizzak, setPizzak] = useState<Array<Car>>([]);
   useEffect(() => {
     apiClient
       .get("/pizzak")
@@ -42,13 +42,13 @@ const Cart = () => {
         </thead>
         <tbody>
           {kosar.map((id, index) => {
-            const pizza = pizzak.find((p) => p.id == id);
+            const car = pizzak.find((p) => p.id == id);
 
             return (
               <tr>
-                <td><img src={`${baseURL}/kepek/${pizza?.imageUrl}`} width={200}/></td>
-                <td>{pizza?.nev}</td>
-                <td>{pizza?.ar} Ft</td>
+                <td><img src={`${baseURL}/kepek/${car?.imageUrl}`} width={200}/></td>
+                <td>{car?.nev}</td>
+                <td>{car?.ar} Ft</td>
                 <td>
                   <Button onClick={() => removeItem(index)} variant="danger">
                     Törlés&nbsp;<FaTrash />
