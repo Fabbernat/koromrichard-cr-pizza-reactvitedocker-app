@@ -34,35 +34,46 @@ const Cart = () => {
   return (
     <>
       <h1>Kosár tartalma</h1>
-      <Table striped bordered hover>
-        <thead>
-          <th>Név</th>
-          <th>Ár</th>
-          <th>Törlés</th>
-        </thead>
-        <tbody>
-          {kosar.map((id, index) => {
-            const car = cars.find((p) => p.id == id);
-
-            return (
+      {kosar.length > 0 ? (
+        <>
+          <Table striped bordered hover>
+            <thead>
               <tr>
-                <td>{car?.images.map((img, i) => (
-                  <img key={i} width={200} src={`${baseURL}/kepek/${img}`} />
-                ))}</td>
-                <td>{car?.modell}</td>
-                <td>{car?.ar} Ft</td>
-                <td>
-                  <Button onClick={() => removeItem(index)} variant="danger">
-                    Törlés&nbsp;<FaTrash />
-                  </Button>
-                </td>
+                <th>Kép</th>
+                <th>Modell</th>
+                <th>Ár</th>
+                <th>Törlés</th>
               </tr>
-            );
-          })}
-        </tbody>
-      </Table>
+            </thead>
+            <tbody>
+              {kosar.map((id, index) => {
+                const car = cars.find((p) => p.id == id);
+
+                return (
+                  <tr key={index}>
+                    <td>{car?.images.map((img, i) => (
+                      <img key={i} width={200} src={`${baseURL}/kepek/${img}`} />
+                    ))}</td>
+                    <td>{car?.modell}</td>
+                    <td>{car?.ar} Ft</td>
+                    <td>
+                      <Button onClick={() => removeItem(index)} variant="danger">
+                        Törlés&nbsp;<FaTrash />
+                      </Button>
+                    </td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </Table>
+          <Button onClick={() => { setKosar([]); toast.success("Kosár ürítve!"); }} variant="warning">
+            Kosár ürítése
+          </Button>
+        </>
+      ) : (
+        <h2>A kosár tartalma üres</h2>
+      )}
     </>
   );
 };
-
 export default Cart;
