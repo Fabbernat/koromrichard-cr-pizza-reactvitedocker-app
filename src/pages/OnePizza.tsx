@@ -13,14 +13,14 @@ const OnePizza = () => {
 
   useEffect(() => {
     apiClient
-      .get(`/pizzak/${id}`)
+      .get(`/cars/${id}`)
       .then((response) => setPizza(response.data))
-      .catch(() => toast.error("A pizzák betöltése sikertelen volt"));
+      .catch(() => toast.error("Az autók betöltése sikertelen volt"));
   }, [id]);
 
   const deletePizza = () => {
     apiClient
-      .delete(`/pizzak/${id}`)
+      .delete(`/cars/${id}`)
       .then(() => {
         toast.success("Sikeres törlés!");
         navigate("/"); // kezdőlapra irányítás

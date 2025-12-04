@@ -13,7 +13,7 @@ const NewPizza = () => {
 
   const submit = () => {
     apiClient
-      .post("/pizzak", car)
+      .post("/cars", car)
       .then(() => toast.success("Sikeres hozzáadás!"))
       .catch(() => toast.error("Sikertelen hozzáadás!"));
   };

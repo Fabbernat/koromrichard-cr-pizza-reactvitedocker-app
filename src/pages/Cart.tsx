@@ -7,12 +7,12 @@ import { FaTrash } from "react-icons/fa";
 
 const Cart = () => {
   // pizzák betöltése az API-ról
-  const [pizzak, setPizzak] = useState<Array<Car>>([]);
+  const [cars, setCars] = useState<Array<Car>>([]);
   useEffect(() => {
     apiClient
-      .get("/pizzak")
-      .then((response) => setPizzak(response.data))
-      .catch(() => toast.error("A pizzák betöltése sikertelen volt"));
+      .get("/cars")
+      .then((response) => setCars(response.data))
+      .catch(() => toast.error("Az autók betöltése sikertelen volt"));
   }, []);
 
   // kosár betöltése localStorage-ból vagy üres tömb, ha nincs
@@ -42,12 +42,14 @@ const Cart = () => {
         </thead>
         <tbody>
           {kosar.map((id, index) => {
-            const car = pizzak.find((p) => p.id == id);
+            const car = cars.find((p) => p.id == id);
 
             return (
               <tr>
-                <td><img src={`${baseURL}/kepek/${car?.imageUrl}`} width={200}/></td>
-                <td>{car?.nev}</td>
+                <td>{car?.images.map((img, i) => (
+                  <img key={i} width={200} src={`${baseURL}/kepek/${img}`} />
+                ))}</td>
+                <td>{car?.modell}</td>
                 <td>{car?.ar} Ft</td>
                 <td>
                   <Button onClick={() => removeItem(index)} variant="danger">

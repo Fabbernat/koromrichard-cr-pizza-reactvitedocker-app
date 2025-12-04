@@ -8,16 +8,16 @@ import { Button, Card, Col, Container, Row } from "react-bootstrap";
 const AllPizza = () => {
   const navigate = useNavigate();
 
-  const [pizzak, setPizzak] = useState<Array<Car>>([]);
+  const [cars, setCars] = useState<Array<Car>>([]);
   const [kosar, setKosar] = useState<Array<number>>(
     JSON.parse(localStorage.getItem("kosar") ?? "[]")
   ); // csak ID-kat tárolok
 
   useEffect(() => {
     apiClient
-      .get("/pizzak")
-      .then((response) => setPizzak(response.data))
-      .catch(() => toast.error("A pizzák betöltése sikertelen volt"));
+      .get("/cars")
+      .then((response) => setCars(response.data))
+      .catch(() => toast.error("Az autók betöltése sikertelen volt"));
   }, []);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const AllPizza = () => {
   return (
     <Container>
       <Row xs={"auto"} md={"auto"} className="g-4">
-        {pizzak.map((i) => generateCard(i))}
+        {cars.map((i) => generateCard(i))}
       </Row>
     </Container>
   );

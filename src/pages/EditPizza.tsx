@@ -16,9 +16,9 @@ const EditPizza = () => {
 
   useEffect(() => {
     apiClient
-      .get(`/pizzak/${id}`)
+      .get(`/cars/${id}`)
       .then((res) => setPizza(res.data))
-      .catch(() => toast.error("A pizzák betöltése sikertelen volt"));
+      .catch(() => toast.error("Az autók betöltése sikertelen volt"));
   }, [id]);
 
   const submit = () => {
@@ -30,7 +30,7 @@ const EditPizza = () => {
     };
 
     apiClient
-      .put(`/pizzak/${id}`, dto)
+      .put(`/cars/${id}`, dto)
       .then(() => toast.success("Sikeres szerkesztés!"))
       .catch(() => toast.error("Sikertelen szerkesztés!"));
   };
